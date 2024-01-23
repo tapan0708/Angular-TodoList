@@ -1,0 +1,53 @@
+<div class="card m-4 p-4 shadow">
+  <div class="text-center mb-3">
+    <h5><b>Todo List</b></h5>
+  </div>
+  <form autocomplete="off" [formGroup]="todoForm" (ngSubmit)="onSubmitTodoForm()">
+    <div class="d-flex flex-wrap flex-lg-nowrap gap-4">
+      <div class="position-relative w-100">
+        <input type="text" class="form-control shadow-none mandatory-star" placeholder="Title"
+          formControlName="title" />
+        <span class="position-absolute mandatory-star text-danger">*</span>
+      </div>
+      <div class="position-relative w-100">
+        <input type="text" class="form-control shadow-none mandatory-star" placeholder="Description"
+          formControlName="desc" />
+        <span class="position-absolute mandatory-star text-danger">*</span>
+      </div>
+      <button class="btn btn-warning w-25" type="submit" [disabled]="!todoForm.valid">
+        Add task
+      </button>
+    </div>
+  </form>
+  <div class="my-3">
+    <div class="row">
+      <div class="col-md-3">
+        <h4>Submitted</h4>
+        <div class="mb-3" *ngFor="let submittedListItem of submittedListData">
+          <app-todo-card [todoItem]="submittedListItem"
+            (statusChangeEvent)="handleStatusChange($event)"></app-todo-card>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>In Review</h4>
+        <div class="mb-3" *ngFor="let InReviewListItem of InReviewListData">
+          <app-todo-card [todoItem]="InReviewListItem" (statusChangeEvent)="handleStatusChange($event)"></app-todo-card>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>In Progress</h4>
+        <div class="mb-3" *ngFor="let InProgressListItem of InProgressListData">
+          <app-todo-card [todoItem]="InProgressListItem"
+            (statusChangeEvent)="handleStatusChange($event)"></app-todo-card>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <h4>Completed</h4>
+        <div class="mb-3" *ngFor="let CompletedListItem of CompletedListData">
+          <app-todo-card [todoItem]="CompletedListItem"
+            (statusChangeEvent)="handleStatusChange($event)"></app-todo-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

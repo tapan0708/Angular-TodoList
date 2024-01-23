@@ -1,0 +1,24 @@
+<div class="card p-2">
+  <div class="d-flex justify-content-between align-items-center">
+    <small class="fw-bold">{{todoItem?.title}}</small>
+    <div class="dropdown">
+      <button class="btn btn-warning dropdown-toggle py-0 px-2" type="button" id="dropdownMenuButton1"
+        data-bs-toggle="dropdown" aria-expanded="false">
+        <small>Status</small>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+        <li><button class="dropdown-item" value="submitted" (click)="onStatusChange($event)">
+            submitted</button></li>
+        <li><button class="dropdown-item" value="review" (click)="onStatusChange($event)">In
+            Review</button></li>
+        <li><button class="dropdown-item" value="progress" (click)="onStatusChange($event)">In
+            Progress</button></li>
+        <li><button class="dropdown-item" value="complete" (click)="onStatusChange($event)">Completed</button></li>
+      </ul>
+    </div>
+  </div>
+  <hr class="my-1" />
+  <small>
+    {{todoItem?.desc}}
+  </small>
+</div>
